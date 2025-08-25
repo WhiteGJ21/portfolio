@@ -30,7 +30,7 @@ header {
   left: 0;
   width: 100%;
   z-index: 1000; /* keeps it above other elements */
-  background-color: #1a2a6c; /* match header */
+  background-color: #0f1b3d; /* match header */
 }
 
 .nav-link {
