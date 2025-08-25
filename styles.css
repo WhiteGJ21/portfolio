@@ -14,7 +14,7 @@ body {
 
 /* === Navbar/Header === */
 header {
-  background-color: #1a2a6c; /* deep navy */
+  background-color: #0f1b3d; /* deep navy */
   padding: 1rem 2rem;
   position: sticky;
   top: 0;
@@ -46,11 +46,12 @@ header {
 
 /* === Welcome Section === */
 #welcome-section {
-  background: linear-gradient(135deg, #1a2a6c, #2D2363);
+  background: linear-gradient(135deg, #1a2a6c, #4a90e2);
   color: white;
   padding: 6rem 2rem;
   text-align: center;
 }
+
 
 
 #welcome-section h1 {
