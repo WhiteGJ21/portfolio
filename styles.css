@@ -46,13 +46,11 @@ header {
 
 /* === Welcome Section === */
 #welcome-section {
-  background: linear-gradient(135deg, #1a2a6c, #4a90e2);
+  background: linear-gradient(135deg, #1a2a6c, #2D3E70, #4a90e2);
   color: white;
   padding: 6rem 2rem;
   text-align: center;
 }
-
-
 
 #welcome-section h1 {
   font-size: 3rem;
