@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="./styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" />
+</head>
+<body>
+<header id="header">
+  <nav id="navbar">
+    <a class="nav-link" href="#about">About</a>
+    <a class="nav-link" href="#skills">Skills</a>
+    <a class="nav-link" href="#projects">Projects</a>
+  </nav>
+</header>
+
+<main>
+  <section id="welcome-section">
+    <h1>Hello There! I'm Gavin White</h1>
+  </section>
+
+  <section id="about">
+    <h2>Who Am I?</h2>
+    <p class="about-text">
+      I’m passionate about building software that actually makes people’s lives easier. There’s nothing more rewarding than contributing to a project that has a real impact — simplifying tasks, saving time, or helping others make better decisions. I thrive when working with a team, bringing energy, dedication, and creativity to every stage of a project.
+    </p>
+    <p class="about-text">
+      I enjoy exploring both front-end and back-end development, building intuitive interfaces, and optimizing workflows behind the scenes. I bring perseverance, problem-solving, and a strong commitment to seeing projects through to success.
+    </p>
+    <p class="about-text">
+      Collaboration and continuous learning are central to how I work. I love helping ideas evolve from concept to reality, experimenting with new technologies, and finding innovative ways to make software smarter and more useful.
+    </p>
+  </section>
+
+
+  <section id="skills">
+    <h2>What I Work With</h2>
+    <div class="skills-container">
+      <div class="skill-card" data-skill="languages">
+        <div class="card-front">Languages</div>
+        <div class="card-back"></div>
+      </div>
+      <div class="skill-card" data-skill="databases">
+        <div class="card-front">Databases</div>
+        <div class="card-back"></div>
+      </div>
+      <div class="skill-card" data-skill="frameworks">
+        <div class="card-front">Frameworks</div>
+        <div class="card-back"></div>
+      </div>
+      <div class="skill-card" data-skill="tools">
+        <div class="card-front">Tools</div>
+        <div class="card-back"></div>
+      </div>
+      <div class="skill-card" data-skill="methodologies">
+        <div class="card-front">Methodologies</div>
+        <div class="card-back"></div>
+      </div>
+    </div>
+
+    <!-- Skills Modal -->
+    <div id="skillsModal" class="modal">
+      <div class="modal-content">
+        <h2 id="skillsModalTitle"></h2>
+        <div id="skillsGrid" class="grid"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects I've Worked On</h2>
+    <a class="project-tile">Github</a>
+    <div class="carousel-container">
+      <button class="carousel-arrow left-arrow">&#10094;</button>
+
+      <div class="carousel">
+        <div class="project-card active" data-category="capstone">
+          <img src="capstone.jpg" alt="Capstone Projects">
+          <h3>Capstone</h3>
+        </div>
+        <div class="project-card" data-category="work">
+          <img src="work.jpg" alt="Work Projects">
+          <h3>Work</h3>
+        </div>
+        <div class="project-card" data-category="school">
+          <img src="school.jpg" alt="School Projects">
+          <h3>School</h3>
+        </div>
+        <div class="project-card" data-category="ai">
+          <img src="ai.jpg" alt="AI/ML Projects">
+          <h3>AI / Machine Learning</h3>
+        </div>
+      </div>
+
+      <button class="carousel-arrow right-arrow">&#10095;</button>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <a id="profile-link" href="" target="_blank">Github</a>
+  <a id="profile-link" href="" target="_blank">LinkedIn</a>
+</footer>
+
+<!-- Modal -->
+<div id="projectModal" class="modal">
+  <div class="modal-content">
+    <span class="modal-close">&times;</span>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+// Carousel logic
+const cards = Array.from(document.querySelectorAll('.project-card'));
+const leftArrow = document.querySelector('.left-arrow');
+const rightArrow = document.querySelector('.right-arrow');
+let activeIndex = 0;
+
+function updateCarousel() {
+  const total = cards.length;
+
+  cards.forEach(card => {
+    card.classList.remove('left', 'center', 'right');
+    card.onclick = null; // Remove any click handlers
+  });
+
+  const leftIndex = (activeIndex - 1 + total) % total;
+  const rightIndex = (activeIndex + 1) % total;
+
+  cards[leftIndex].classList.add('left');
+  cards[activeIndex].classList.add('center');
+  cards[rightIndex].classList.add('right');
+
+  // Enable click only for center card
+  const centerCard = cards[activeIndex];
+  centerCard.onclick = () => {
+    console.log(`Opening details for: ${centerCard.querySelector('h3').innerText}`);
+    // Call your popup logic here
+  };
+}
+
+leftArrow.addEventListener('click', () => {
+  activeIndex = (activeIndex - 1 + cards.length) % cards.length;
+  updateCarousel();
+});
+rightArrow.addEventListener('click', () => {
+  activeIndex = (activeIndex + 1) % cards.length;
+  updateCarousel();
+});
+window.addEventListener('load', updateCarousel);
+window.addEventListener('resize', updateCarousel);
+
+// Modal logic
+const modal = document.getElementById('projectModal');
+const modalBody = document.getElementById('modal-body');
+const closeBtn = document.querySelector('.modal-close');
+
+let currentCategory = null;
+
+// Project data
+const projectData = {
+  capstone: {
+    title: "FreshStart",
+    description: `
+      <p>FreshStart is a web-based application designed to assist faculty advisors at Grove City College in reviewing and verifying incoming freshmen course schedules. FreshStart automatically analyzes each student’s schedule to identify common issues such as missing prerequisites, unbalanced workloads, or unmet core requirements. Advisors can then review suggested solutions, make adjustments, and communicate directly with students via email through the platform. This streamlines the advising process and helps ensure students are on the right academic path from day one.</p>
+      <br>
+      <p>In this project, I served as both a developer and an organizer in a team of 4, taking charge of Scrum meetings to ensure tasks were progressing smoothly and deadlines were met. My technical contributions included integrating the application with the API and displaying the fetched data across each page, implementing Microsoft (MSAL) authentication for secure access, and creating the full navigation structure — including all pages, routes, and internal links. I also created the basic page designs and structures for the front-end designer to build off of and collaborated closely with them to ensure the UI was implemented according to the design specifications and maintained visual consistency across the application. This combination of leadership, hands-on development, and collaborative design work helped drive the project from planning to successful deployment.</p>
+    `,
+    tech: ["Python", "TypeScript", "HTML", "CSS"],
+    tools: ["React", "Flask", "MySQL", "VS Code", "Jira", "GitHub", "Balsamiq"],
+    platform: "Web"
+  },
+  work: [
+    { name: "MainFrameIT Config", description: "Machine Setup Tool", tech: ["PowerShell"], tools: ["PowerShell Studio"], platform: "Desktop", workflow: `<p>MainFrameIT Config was developed to streamline the setup, management, and tracking of client machines. The main goal of the project was to allow clients to build and configure their own machines while automatically recording all relevant data in FileMaker, enabling accurate billing and efficient record-keeping.</p><br>
+<p>The application provides functionalities to reset or remove machines, update records in FileMaker, and ensure that all machine setups are properly tracked. This automation helps save significant time for the engineering team and reduces errors in client billing.</p><br>
+<p>In terms of my role, I worked closely with a senior engineer who designed and built the backend scripts for building, resetting, and removing machines. My responsibility was to develop the frontend in PowerShell Studio and implement the scripts that would allow these commands to function properly through an intuitive interface for the end-user.</p><br>
+<p>Throughout the development process, I focused on making the application user-friendly while ensuring that each feature reliably interacted with the backend scripts and FileMaker database. This allowed clients to independently manage their machines while maintaining accurate and up-to-date records, ultimately improving operational efficiency and client satisfaction.</p>` },
+    { name: "MainFrameIT Utility", description: "Desktop Productivity Tools", tech: ["PowerShell"], tools: ["PowerShell Studio"], platform: "Desktop", workflow: `<p>This project involved creating a Windows desktop utility app using <strong>PowerShell Studio</strong> to provide practical tools for end-users in locked-down enterprise environments.</p><br>
+<p>I worked with a Senior Engineer who designed each feature, while I created the frontend interface and implemented the scripting necessary to ensure his scripts functioned correctly. This collaboration allowed us to transform technical solutions into a user-friendly application for end-users.</p><br>
+<p>The utility provides capabilities such as safely killing and resetting applications, installing and configuring printers, self-diagnosing network issues, and assessing Wi-Fi health to improve connectivity. Each tool was designed to be intuitive and secure, giving employees the ability to address everyday technical challenges independently.</p><br>
+<p>By empowering clients to solve problems on their own, this project reduced the number of support tickets and improved operational efficiency. It highlights the importance of providing users with practical tools and autonomy to manage routine technical issues.</p>` },
+    { name: "Conditional Access Automation", description: "Security Policy Automation", tech: ["PowerShell"], tools: ["Microsoft Graph API", "VS Code"], workflow: `<p>
+For this project, my main objective was to reduce the time it takes to implement Microsoft Entra Conditional Access security policies. 
+Previously, the process required manually creating each policy one by one, which was time-consuming and prone to error. 
+My role was to research and implement a fully automated workflow that streamlined this entire process.
+</p>
+<br>
+<p>
+The automation I developed focused on more than just importing pre-built JSON files of policies. 
+I implemented functionality to <strong>create the necessary locations, groups, and GUID collections</strong>, then dynamically insert them into JSON templates for each policy. 
+This ensured that every client’s Microsoft environment had the right objects in place before the policies were deployed.
+</p>
+<br>
+<p>
+One of the most impactful parts of this project was <strong>automating the creation of an Azure app with the proper permissions</strong>. 
+This app served as the vehicle for importing the policies, groups, and locations into the tenant. 
+To prioritize security, I designed the workflow so that <strong>the app was automatically deleted once the process completed</strong>. 
+This prevented the possibility of someone re-using the app to import policies on their own, ensuring that policy deployment always remained controlled and secure.
+</p>
+<br>
+<p>
+This work required extensive research, trial and error, and close collaboration with senior engineers to refine the JSON structure and optimize the automation. 
+Over time, we iterated on the policies multiple times to better align them with client needs and Microsoft best practices. 
+The result was a system that significantly reduced manual effort, standardized deployments, and improved security across multiple client environments.
+</p>
+<br>
+<p>
+Looking forward, we plan to evolve this script into a full <strong>PowerShell Studio application</strong>. 
+This would allow other employees to easily deploy and manage conditional access policies through a user-friendly interface, rather than relying on a script that only a few know how to operate. 
+By taking it to this next stage, the automation will become even more accessible and valuable to the entire team.
+</p>` },
+    { name: "MainframeIT Wiki", description: "Client Knowledge Portal", tech: ["PowerShell", "JavaScript", "HTML", "CSS"], tools: ["Filemaker", "Azure Functions", "Azure Static Web App", "Azure Table Storage", "GitHub"], platform: "Web", workflow: `<p>
+For the MainframeIT Wiki project, my goal was to transform how our clients accessed important information. The data originally lived in a Filemaker database, which was not the most efficient way to deliver insights to end users. I researched alternatives and determined that moving the data into Azure Table Storage would give us a more scalable, accessible backend for the wiki.
+</p>
+<br>
+<p>
+Once the data was migrated, I designed and implemented a series of Azure Functions to query and return specific datasets. This included information such as onboarding profiles, conditional access policies, distribution lists, knowledge articles, and even Barracuda email security details. These functions allowed us to separate the logic layer from the presentation layer, while making the data more modular and reusable across different parts of the wiki.
+</p>
+<br>
+<p>
+On the frontend, I used an Azure Static Web App connected to GitHub for deployment and version control. This setup made it easy to integrate continuous updates and ensure changes went through review and testing before reaching clients. Using JavaScript, HTML, and CSS, I built the client-facing wiki pages to dynamically call the Azure Functions and display the datasets in a user-friendly way. This made the information significantly more accessible and intuitive for clients, replacing what used to be a manual process with an automated, streamlined experience.
+</p>
+<br>
+<p>
+Throughout the process, I collaborated with senior engineers for guidance, but I personally researched and implemented most of the technical stack. From selecting Azure Table Storage as the data store, to wiring up the Functions, to structuring the static web app, I was directly responsible for building the pieces that turned the project into a working solution. This project gave me experience in architecting cloud-based workflows, integrating multiple services, and presenting complex backend data through a clean web interface.
+</p>
+`}
+  ],
+  school: [
+    { name: "Course Planner", description: "Course Registration Tool", tech: ["Java", "JavaScript", "HTML", "CSS"], tools: ["Intellij", "MySQL", "JavaFX"], platform: "Web", workflow: `<p>This project was developed as part of our Junior Year Software Engineering course to create a more efficient system for signing up for classes at Grove City College, addressing recurring issues during registration each semester.</p><br>
+<p>My primary responsibility was researching JavaFX to determine the best approach for building an intuitive and functional frontend. After learning the framework, I taught the other frontend developers on my team how to implement it effectively, ensuring a consistent design across the application.</p><br>
+<p>In addition to guiding frontend development, I worked on connecting the backend MySQL database to the JavaFX frontend, enabling seamless communication between the database and the user interface. This involved ensuring that course schedules, availability, and user selections were accurately reflected in real-time.</p><br>
+<p>I also played a central role in coordinating between backend and frontend teams, managing design expectations, and providing guidance to maintain alignment with project goals. Regular communication with teammates ensured that both technical implementation and user experience standards were consistently met throughout the project.</p><br>
+<p>Overall, my contributions were focused on bridging frontend and backend functionality, mentoring team members in JavaFX, and facilitating communication to deliver a functional and user-friendly course registration tool.</p>` },
+    { name: "ADG Reviews", description: "Movie Review Platform", tech: ["Python", "JavaScript", "HTML", "CSS"], tools: ["MySQL", "VS Code", "Flask"], platform: "Web", workflow: `<p>ADG Reviews was a team project for our final Web Programming course, designed to provide users with personalized movie recommendations and highlight popular movies within each genre.</p><br>
+<p>My primary focus was on user authentication, including account creation, login functionality, and managing admin accounts. I worked closely with another team member on the overall design to ensure a clean, user-friendly interface.</p><br>
+<p>For the admin functionality, I developed the admin page where administrators can monitor and manage inappropriate messages left by users. This ensured the platform maintained a safe and respectful environment.</p><br>
+<p>Additionally, I researched various movie APIs to find the best fit for our application. After evaluating options, we integrated The Movie Database (TMDB) API to provide up-to-date movie information and recommendations.</p><br>
+<p>Throughout the project, I collaborated closely with team members to connect the frontend with our MySQL backend, ensuring smooth communication and consistent functionality across the platform. I also played a key role in guiding frontend implementation and maintaining design consistency.</p>` },
+    { name: "Banish Forest", description: "2D Platformer Game", tech: ["C#"], tools: ["Unity"], platform: "Desktop", workflow: `<p>Banish Forest was the final project for my 2D Game Design course, where we aimed to create a classic side-scrolling platformer inspired by Mario. Players progress through levels, eliminating monsters along the way to ultimately reach and defeat the final boss.<br><br>My primary focus for this project was designing and implementing the user's character and the standard monsters encountered in each level. This included programming movement mechanics, attack behaviors, collision detection, animations, and overall character design.<br><br>While I concentrated on characters and their interactions, my partner was responsible for level design, layout, and implementing the final boss fight. Collaborating closely, we ensured that gameplay, enemy placement, and level progression felt engaging and balanced.<br><br>This project allowed me to gain hands-on experience with Unity and C#, reinforcing concepts like object-oriented programming, animation integration, and game logic. It also strengthened my ability to coordinate work in a small team, ensuring both gameplay and level design complemented each other to create a cohesive and enjoyable player experience.</p>` }
+  ],
+  ai: [
+    { name: "Clickomania AI", description: "AI solver for puzzle game.", tech: ["Python"], tools: ["VS Code"], workflow: `
+    <p>
+      For this project, my team and I developed an AI agent to solve the puzzle game 
+      <em>Clickomania</em>. We implemented and compared two approaches: 
+      Iterative Deepening Search (IDS) and Iterative Deepening A* (IDA*).
+    </p>
+    <br>
+    <p>
+      IDS was chosen because the optimal solution depth is unknown in Clickomania. 
+      It combines the memory efficiency of DFS with the completeness and optimality of BFS, 
+      making it well-suited for smaller boards. However, as board sizes grew, IDS became 
+      computationally expensive due to repeated state exploration.
+    </p>
+    <br>
+    <p>
+      IDA*, in contrast, incorporated a heuristic based on counting color blobs 
+      (connected groups of blocks) and penalizing isolated blocks. While the heuristic 
+      was not admissible — it sometimes overestimated moves — it guided the search toward 
+      promising states. This allowed IDA* to evaluate fewer nodes and consistently solve 
+      larger boards more efficiently than IDS.
+    </p>
+    <br>
+    <p>
+      Through this project, our team gained hands-on experience implementing 
+      uninformed and informed search strategies, designing heuristics, and analyzing 
+      trade-offs between memory, optimality, and scalability. The comparison highlighted 
+      how heuristics can drastically improve problem-solving efficiency in large state spaces.
+    </p>
+  ` },
+    { name: "Hanabi AI", description: "AI player for cooperative card game.", tech: ["Java"], platform: "Intellij", workflow: `Our team developed an AI agent to play the cooperative card game Hanabi. The AI was designed to reason about incomplete information, maintain a dynamic knowledge base of possible cards, and decide whether to play, discard, or give a hint. Key features included a <strong>CardKnowledge</strong> system to track possibilities, decision-making strategies prioritizing safe plays and actionable hints, and state tracking for cards, hints, and game progress. Built within the provided interfaces, our modular design separated inference logic from decision-making, implemented safeguards against risky discards, and optimized hint-giving for critical plays. The AI consistently scored above the 15-point benchmark, demonstrating cooperative play through reasoning and inference without direct communication.` },
+    { name: "Income Prediction Model", description: "Machine Learning Salary Predictor.", tech: ["Python", "Scikit-learn"], tools: ["Jupyter"], platform: "Google Colaboratory", workflow: `
+<p>
+  For this project, I built a machine learning model to predict whether an individual’s income is greater than or less than $50,000 using the UCI Adult Income dataset. The work was completed independently in Google Colab with Python, and involved end-to-end implementation: from data exploration and preprocessing to feature engineering, model development, and evaluation.
+</p>
+<br>
+<p>
+  The project began with <strong>feature analysis</strong>. I examined the 14 available features (age, education, occupation, hours worked per week, etc.) to understand how each relates to income. This included identifying categorical versus numerical features, exploring class imbalances, and handling missing values. Visualizations such as histograms and bar plots were used to investigate patterns, like the relationship between hours worked and salary levels or the combined effect of race and gender on income distribution. Through this analysis, I uncovered several biases in the dataset — for example, its strong skew toward White individuals and the outsized influence of financial attributes such as capital gains compared to demographic features.
+</p>
+<br>
+<p>
+  Once the dataset was better understood, I moved to <strong>feature engineering</strong>. To reduce noise and overfitting, I applied binning to numerical features such as age, hours-per-week, and capital-gain. This grouped values into meaningful ranges (e.g., low/medium/high), which simplified the data and improved interpretability. I also addressed categorical features by consolidating overly granular categories, like education levels, into broader groups. These steps made the dataset more balanced and suitable for tree-based models.
+</p>
+<br>
+<p>
+  With preprocessing complete, I implemented a <strong>decision tree classifier</strong> as the primary model. Decision trees were chosen because they handle both categorical and numerical data effectively and provide interpretable results. In the initial version, the model severely overfit the training data due to reliance on unique capital-gain values. To correct this, I introduced the binning strategy mentioned above, which significantly reduced tree complexity and improved generalization. After this adjustment, the model achieved balanced performance with training accuracy around 74% and test accuracy around 75%.
+</p>
+<br>
+<p>
+  The final stage of the project involved <strong>insight extraction</strong>. One key finding was that financial features such as capital-gain had far greater predictive power than demographic variables like age, race, or sex, which often appeared deeper in the tree. This highlighted how financial data drives income predictions much more strongly than social or demographic attributes in this dataset. Additionally, I learned how preprocessing choices (such as removing vs. binning features) directly influence model bias, interpretability, and performance.
+</p>
+<br>
+<p>
+  Through this project, I gained hands-on experience in the full machine learning workflow: exploratory data analysis, feature engineering, model training, tuning for overfitting, and interpreting results. It reinforced the importance of thoughtful preprocessing and highlighted the trade-offs between accuracy, fairness, and interpretability in predictive modeling.
+</p>
+` }
+  ]
+};
+
+// Function to render a category grid
+function renderCategoryGrid(category) {
+  currentCategory = category;
+  modalBody.innerHTML = `<h2>${category.toUpperCase()} Projects</h2><div class="grid"></div>`;
+  const grid = modalBody.querySelector('.grid');
+
+  projectData[category].forEach(proj => {
+    const div = document.createElement('div');
+    div.className = 'grid-card';
+    div.innerHTML = `<h3>${proj.name}</h3><p>${proj.description}</p>`;
+
+    // Open project detail on click
+    div.addEventListener('click', (e) => {
+      e.stopPropagation();
+      modalBody.innerHTML = `
+        <h2>${proj.name}</h2>
+        <p>${proj.description}</p>
+        ${proj.tech ? `<p><strong>Languages:</strong> ${proj.tech.join(', ')}</p>` : ""}
+        ${proj.tools ? `<p><strong>Tools:</strong> ${proj.tools.join(', ')}</p>` : ""}
+        ${proj.platform ? `<p><strong>Platform:</strong> ${proj.platform}</p>` : ""}
+        ${proj.workflow ? `<div class="workflow"><h3>Workflow</h3><p>${proj.workflow}</p></div>` : ""}
+        <button id="backBtn">← Back</button>
+      `;
+
+      // Back button returns to category grid
+      document.getElementById('backBtn').addEventListener('click', () => {
+        renderCategoryGrid(category);
+      });
+    });
+
+    grid.appendChild(div);
+  });
+
+  modal.style.display = "block";
+}
+
+// Click on category cards
+cards.forEach(card => {
+  card.addEventListener('click', () => {
+    const category = card.getAttribute('data-category');
+
+    if (category === "capstone") {
+      const p = projectData.capstone;
+      modalBody.innerHTML = `
+        <h2>${p.title}</h2>
+        <p><strong>Tech:</strong> ${p.tech.join(', ')}</p>
+        <p><strong>Tools:</strong> ${p.tools.join(', ')}</p>
+        <p><strong>Platform:</strong> ${p.platform}</p>
+        <p>${p.description}</p>
+      `;
+      modal.style.display = "block";
+    } else {
+      renderCategoryGrid(category);
+    }
+  });
+});
+
+// Close modal
+closeBtn.addEventListener('click', () => modal.style.display = "none");
+window.addEventListener('click', (e) => { 
+  if (e.target == modal) modal.style.display = "none"; 
+});
+
+const skillsData = {
+  languages: ["Java", "Python", "Swift", "TypeScript", "JavaScript", "HTML", "CSS", "PowerShell"],
+  databases: ["SQL", "Azure Table Storage", "Firebase", "FileMaker"],
+  frameworks: ["React", "Flask", "Node.js", "JUnit"],
+  tools: ["Git/GitHub", "Powershell Studio", "Azure Function App", "Azure Static Web App", "Jira"],
+  methodologies: ["Agile", "Scrum", "CI/CD Pipeline", "Wireframing", "Test-Driven Development"]
+};
+
+const skillCards = document.querySelectorAll(".skill-card");
+const skillsModal = document.getElementById("skillsModal");
+const skillsModalTitle = document.getElementById("skillsModalTitle");
+const skillsGrid = document.getElementById("skillsGrid");
+const skillsCloseBtn = skillsModal.querySelector(".modal-close");
+
+skillCards.forEach(card => {
+  const cardFront = card.querySelector('.card-front');
+  const cardBack = card.querySelector('.card-back');
+
+  card.addEventListener("click", () => {
+    if (card.classList.contains("expanded")) return; // ignore clicks if already expanded
+
+    const skillType = card.getAttribute("data-skill");
+    const items = skillsData[skillType];
+
+    // Clear and populate back
+    cardBack.innerHTML = `<h3>${skillType.charAt(0).toUpperCase() + skillType.slice(1)}</h3>`;
+
+    // Create a wrapper for items
+    const itemsWrapper = document.createElement("div");
+    itemsWrapper.style.display = skillType === "languages" ? "grid" : "block";
+    itemsWrapper.style.justifyContent = "center"; // center horizontally
+  itemsWrapper.style.flexWrap = "wrap"; // wrap items if needed
+
+    if (skillType === "languages") {
+      itemsWrapper.style.display = "grid";
+      itemsWrapper.style.gridTemplateColumns = "1fr 1fr";
+      itemsWrapper.style.columnGap = "1rem"; 
+      itemsWrapper.style.rowGap = "0.5rem"; 
+      itemsWrapper.style.textAlign = "center"; // center text inside grid
+      itemsWrapper.style.justifyContent = "center";
+    } else {
+      itemsWrapper.style.display = "flex";
+      itemsWrapper.style.flexDirection = "column";
+      itemsWrapper.style.alignItems = "center"; // center items
+    }
+
+    // Add individual items
+    items.forEach(item => {
+      const div = document.createElement("div");
+      div.textContent = item;
+      div.style.margin = "0.5rem 0";
+      itemsWrapper.appendChild(div);
+    });
+
+    cardBack.appendChild(itemsWrapper);
+
+    // Add close button if not already
+    if (!cardBack.querySelector(".close-btn")) {
+      const closeBtn = document.createElement("button");
+      closeBtn.textContent = "×";
+      closeBtn.className = "close-btn";
+      Object.assign(closeBtn.style, {
+        position: "absolute",
+        top: "10px",
+        right: "10px",
+        fontSize: "1.5rem",
+        cursor: "pointer",
+        background: "transparent",
+        border: "none"
+      });
+      cardBack.appendChild(closeBtn);
+
+      closeBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        card.classList.remove("expanded", "flipped", "locked");
+        card.style.transform = "";
+        skillCards.forEach(c => c.classList.remove("hidden"));
+      });
+    }
+
+    // Hide other cards
+    skillCards.forEach(c => { if (c !== card) c.classList.add("hidden"); });
+
+    // Calculate offset for perfect centering
+    const container = document.querySelector(".skills-container");
+    const containerRect = container.getBoundingClientRect();
+    const cardRect = card.getBoundingClientRect();
+
+    const scale = 1.2;
+    const cardCenter = cardRect.left + cardRect.width / 2;
+    const containerCenter = containerRect.left + containerRect.width / 2;
+    const offsetX = (containerCenter - cardCenter) / scale;
+
+    // Flip + expand + center + lock
+    card.classList.add("flipped", "expanded", "locked");
+    card.style.transform = `scale(${scale}) translateX(${offsetX}px)`;
+  });
+});
+
+
+// Close modal
+const exitBtn = document.querySelector('#projectModal .modal-close');
+exitBtn.addEventListener('click', () => {
+  modal.style.display = "none";
+  currentCategory = null;
+});
+
+window.addEventListener('click', (e) => { 
+  if (e.target == modal) {
+    modal.style.display = "none"; 
+    currentCategory = null;
+  }
+});
+
+</script>
+</body>
+</html>
