@@ -208,11 +208,25 @@ section h2 {
   color: #f5f6fa;
   box-shadow: 0 10px 32px rgba(0,0,0,0.35);
   margin: 2rem auto;
-  padding: 2rem;
+  padding: 2rem 2.5rem;
   border-radius: 10px;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
   max-width: 800px;
-  width: auto;
+  width: 100%;
+}
+
+.modal-content h2, .modal-content h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.modal-content p, .modal-content .workflow {
+  margin-bottom: 1.25rem;
+  line-height: 1.7;
 }
 
 .modal-close {
@@ -238,6 +252,7 @@ section h2 {
   color: #f5f6fa;
   box-shadow: 0 2px 8px rgba(0,0,0,0.18);
   transition: background 0.3s;
+  padding: 1.25rem 1rem;
 }
 
 .grid-card:hover {
@@ -318,35 +333,61 @@ section h2 {
   transform: scale(0.8);
 }
 
-/* Skills modal tweaks */
+/* --- Fix skills modal and project modal centering and padding --- */
 #skillsModal .modal-content {
   max-width: 600px;
-  width: auto;
+  width: 100%;
   margin: auto;
-  padding: 2rem;
+  padding: 2rem 2.5rem;
   border-radius: 10px;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 #skillsGrid {
+  margin-top: 1.5rem;
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 0.75rem;
-  margin-top: 1rem;
+  gap: 1rem;
+  justify-items: center;
 }
 
-#skillsGrid div {
-  background: #23272f;
-  color: #21e6c1;
-  padding: 0.5rem;
-  border-radius: 6px;
-  text-align: center;
-  font-size: 0.9rem;
+.modal-content {
+  max-width: 800px;
+  width: 100%;
+  margin: auto;
+  padding: 2rem 2.5rem;
+  border-radius: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
 }
 
-#skillsGrid div[data-skill="languages"] {
-  column-count: 2;
-  column-gap: 0.5rem;
+.modal-content h2, .modal-content h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.modal-content p, .modal-content .workflow {
+  margin-bottom: 1.25rem;
+  line-height: 1.7;
+}
+
+.grid-card {
+  padding: 1.25rem 1rem;
+}
+
+@media (max-width: 700px) {
+  #skillsModal .modal-content, .modal-content {
+    max-width: 98vw;
+    padding: 1rem 0.5rem;
+  }
 }
 
 /* Footer */
