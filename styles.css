@@ -247,9 +247,11 @@ section h2 {
 
 /* === Skills Section === */
 .skills-container {
+  position: relative;
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
+  align-items: center;
   gap: 2rem;
   margin-top: 2.5rem;
   overflow-x: auto;
@@ -302,10 +304,11 @@ section h2 {
 }
 
 .skill-card.expanded {
-  width: 400px;
-  height: 300px;
-  transform: scale(1.2) translateX(0);
-  z-index: 10;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(1.2);
+  z-index: 20;
 }
 
 /* Hide non-expanded cards */
@@ -395,15 +398,18 @@ footer a:hover {
 }
 
 @media (max-width: 1500px) {
-  section {
-    max-width: 98vw;
-  }
-
   .skills-container {
     flex-wrap: wrap;
     justify-content: center;
     gap: 1.5rem;
     overflow-x: unset;
+  }
+  .skill-card.expanded {
+    position: fixed;
+    left: 50vw;
+    top: 50vh;
+    transform: translate(-50%, -50%) scale(1.1);
+    z-index: 30;
   }
 }
 
