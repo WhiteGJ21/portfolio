@@ -262,7 +262,7 @@ section h2 {
 
 /* === Skills Section === */
 .skills-container {
-  position: relative;
+  /* position: relative; */
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
