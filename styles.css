@@ -329,10 +329,16 @@ section h2 {
 }
 
 .skill-card.expanded {
-  width: 400px;
-  height: 300px;
+  width: min(400px, 90vw);
+  height: min(300px, 60vw);
+  min-width: 220px;
+  min-height: 180px;
   transform: scale(1.2) translateX(0);
   z-index: 10;
+  position: relative;
+  left: unset;
+  top: unset;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.25);
 }
 
 /* Hide non-expanded cards */
@@ -445,7 +451,42 @@ footer a:hover {
   section {
     max-width: 80vw;
     width: 80vw;
+    min-width: 350px;
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+}
+
+@media (max-width: 900px) {
+  section {
+    max-width: 95vw;
+    width: 95vw;
+    min-width: 250px;
+    padding: 2rem 0.5rem;
+    margin: 1.5rem auto;
+  }
+
+  .skill-card.expanded {
+    width: min(95vw, 400px);
+    height: min(60vw, 300px);
+    min-width: 180px;
+    min-height: 120px;
+    box-shadow: 0 10px 32px rgba(0,0,0,0.35);
+  }
+}
+
+@media (max-width: 600px) {
+  section {
+    max-width: 98vw;
+    width: 98vw;
+    min-width: unset;
+    padding: 1rem 0.25rem;
+  }
+
+  .skill-card.expanded {
+    width: 98vw;
+    height: 60vw;
+    min-width: 120px;
+    min-height: 100px;
   }
 }
