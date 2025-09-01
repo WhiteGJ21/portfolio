@@ -379,34 +379,32 @@ skillCards.forEach(card => {
   const cardBack = card.querySelector('.card-back');
 
   card.addEventListener("click", () => {
-    if (card.classList.contains("expanded")) return; // ignore clicks if already expanded
+    if (card.classList.contains("expanded")) return; // ignore if already expanded
 
     const skillType = card.getAttribute("data-skill");
     const items = skillsData[skillType];
 
-    // Clear and populate back
+    // Populate back
     cardBack.innerHTML = `<h3>${skillType.charAt(0).toUpperCase() + skillType.slice(1)}</h3>`;
 
-    // Create a wrapper for items
     const itemsWrapper = document.createElement("div");
     itemsWrapper.style.display = skillType === "languages" ? "grid" : "block";
-    itemsWrapper.style.justifyContent = "center"; // center horizontally
-  itemsWrapper.style.flexWrap = "wrap"; // wrap items if needed
+    itemsWrapper.style.justifyContent = "center";
+    itemsWrapper.style.flexWrap = "wrap";
 
     if (skillType === "languages") {
       itemsWrapper.style.display = "grid";
       itemsWrapper.style.gridTemplateColumns = "1fr 1fr";
-      itemsWrapper.style.columnGap = "1rem"; 
-      itemsWrapper.style.rowGap = "0.5rem"; 
-      itemsWrapper.style.textAlign = "center"; // center text inside grid
+      itemsWrapper.style.columnGap = "1rem";
+      itemsWrapper.style.rowGap = "0.5rem";
+      itemsWrapper.style.textAlign = "center";
       itemsWrapper.style.justifyContent = "center";
     } else {
       itemsWrapper.style.display = "flex";
       itemsWrapper.style.flexDirection = "column";
-      itemsWrapper.style.alignItems = "center"; // center items
+      itemsWrapper.style.alignItems = "center";
     }
 
-    // Add individual items
     items.forEach(item => {
       const div = document.createElement("div");
       div.textContent = item;
@@ -436,26 +434,32 @@ skillCards.forEach(card => {
         e.stopPropagation();
         card.classList.remove("expanded", "flipped", "locked");
         card.style.transform = "";
-        skillCards.forEach(c => c.classList.remove("hidden"));
+        // ensure container reflows before showing siblings to avoid layout jump
+        requestAnimationFrame(() => {
+          skillCards.forEach(c => c.classList.remove("hidden"));
+        });
       });
     }
 
     // Hide other cards
     skillCards.forEach(c => { if (c !== card) c.classList.add("hidden"); });
 
-    // Calculate offset for perfect centering
-    const container = document.querySelector(".skills-container");
-    const containerRect = container.getBoundingClientRect();
-    const cardRect = card.getBoundingClientRect();
+    // Expand first so layout settles (prevents jerky flip on multi-row)
+    card.classList.add("expanded", "flipped", "locked");
 
-    const scale = 1.2;
-    const cardCenter = cardRect.left + cardRect.width / 2;
-    const containerCenter = containerRect.left + containerRect.width / 2;
-    const offsetX = (containerCenter - cardCenter) / scale;
+    // Next frame: measure and center based on final layout
+    requestAnimationFrame(() => {
+      const container = document.querySelector(".skills-container");
+      const containerRect = container.getBoundingClientRect();
+      const cardRect = card.getBoundingClientRect();
 
-    // Flip + expand + center + lock
-    card.classList.add("flipped", "expanded", "locked");
-    card.style.transform = `scale(${scale}) translateX(${offsetX}px)`;
+      const scale = 1.2;
+      const cardCenter = cardRect.left + cardRect.width / 2;
+      const containerCenter = containerRect.left + containerRect.width / 2;
+      const offsetX = (containerCenter - cardCenter) / scale;
+
+      card.style.transform = `scale(${scale}) translateX(${offsetX}px)`;
+    });
   });
 });
 
