@@ -473,21 +473,21 @@ footer a:hover {
   }
 
   section {
-    max-width: 80vw;
-    width: 80vw;
-    min-width: 350px;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    max-width: 1400px;
+    width: 100%;
+    margin: 3rem auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 }
 
 @media (max-width: 900px) {
   section {
-    max-width: 95vw;
-    width: 95vw;
-    min-width: 250px;
-    padding: 2rem 0.5rem;
-    margin: 1.5rem auto;
+    max-width: 1400px;
+    width: 100%;
+    margin: 2rem auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
   .skill-card.expanded {
@@ -501,10 +501,11 @@ footer a:hover {
 
 @media (max-width: 600px) {
   section {
-    max-width: 98vw;
-    width: 98vw;
-    min-width: unset;
-    padding: 1rem 0.25rem;
+    max-width: 1400px;
+    width: 100%;
+    margin: 1rem auto;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
 
   .skill-card.expanded {
