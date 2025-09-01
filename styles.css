@@ -338,10 +338,11 @@ section h2 {
   min-width: 220px;
   min-height: 180px;
   /* transform moved to JS for accurate centering after layout */
-  z-index: 10;
+  z-index: 30; /* ensure on top */
   position: relative;
   left: unset;
   top: unset;
+  transform-origin: center center; /* smoother scale */
   box-shadow: 0 6px 24px rgba(0,0,0,0.25);
 }
 
@@ -352,7 +353,16 @@ section h2 {
     position: relative;
     left: unset;
     top: unset;
-    /* rely on JS to center horizontally with translateX(...) and scale */
+    /* occupy its own flex line and center in that line */
+    flex-basis: 100%;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+  }
+  /* center the inner card block when expanded */
+  .skill-card.expanded > .card-front,
+  .skill-card.expanded > .card-back {
     width: min(95vw, 400px);
     height: min(60vw, 300px);
     min-width: 180px;

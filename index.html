@@ -447,18 +447,25 @@ skillCards.forEach(card => {
     // Expand first so layout settles (prevents jerky flip on multi-row)
     card.classList.add("expanded", "flipped", "locked");
 
-    // Next frame: measure and center based on final layout
+    // Next frame: either rely on CSS centering (multi-row) or JS centering (single row)
     requestAnimationFrame(() => {
       const container = document.querySelector(".skills-container");
       const containerRect = container.getBoundingClientRect();
       const cardRect = card.getBoundingClientRect();
 
+      const isMultiRow = containerRect.height > cardRect.height * 1.5; // rough heuristic
       const scale = 1.2;
-      const cardCenter = cardRect.left + cardRect.width / 2;
-      const containerCenter = containerRect.left + containerRect.width / 2;
-      const offsetX = (containerCenter - cardCenter) / scale;
 
-      card.style.transform = `scale(${scale}) translateX(${offsetX}px)`;
+      if (isMultiRow) {
+        // Let CSS flex centering handle horizontal centering; only scale for smoothness
+        card.style.transform = `scale(${scale})`;
+      } else {
+        // Single-row: do fine-grained JS centering
+        const cardCenter = cardRect.left + cardRect.width / 2;
+        const containerCenter = containerRect.left + containerRect.width / 2;
+        const offsetX = (containerCenter - cardCenter) / scale;
+        card.style.transform = `scale(${scale}) translateX(${offsetX}px)`;
+      }
     });
   });
 });
