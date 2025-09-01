@@ -433,7 +433,7 @@ footer a:hover {
   }
   /* Always center expanded skill cards */
   .skill-card.expanded {
-    position: relative;
+    position: fixed;
     left: 50vw;
     top: 50vh;
     transform: translate(-50%, -50%) scale(1.1);
