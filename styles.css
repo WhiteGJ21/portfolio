@@ -344,10 +344,11 @@ section h2 {
 /* --- Skill Modal Responsive Centering --- */
 @media (max-width: 900px) {
   .skill-card.expanded {
-    position: fixed;
-    left: 50vw;
-    top: 50vh;
-    transform: translate(-50%, -50%) scale(1.05);
+    /* keep in-flow so section height updates */
+    position: relative;
+    left: unset;
+    top: unset;
+    /* rely on JS to center horizontally with translateX(...) and scale */
     width: min(95vw, 400px);
     height: min(60vw, 300px);
     min-width: 180px;
@@ -464,13 +465,7 @@ footer a:hover {
     gap: 1.5rem;
     overflow-x: unset;
   }
-  .skill-card.expanded {
-    position: fixed;
-    left: 50vw;
-    top: 50vh;
-    transform: translate(-50%, -50%) scale(1.1);
-    z-index: 30;
-  }
+
 
   section {
     max-width: 1400px;
