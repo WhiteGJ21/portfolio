@@ -416,8 +416,8 @@ footer a:hover {
   section {
     padding: 2rem 0.5rem;
     margin: 1.5rem auto;
-    max-width: 98vw;
-    width: 98vw;
+    max-width: 80vw;
+    width: 80vw;
   }
 
   .modal-content, #skillsModal .modal-content {
