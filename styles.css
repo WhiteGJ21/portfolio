@@ -82,6 +82,8 @@ section {
   box-shadow: 0 2px 16px rgba(0,0,0,0.18);
   padding: 4rem 2.5rem 3rem 2.5rem;
   max-width: 1400px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 section h2 {
@@ -89,14 +91,6 @@ section h2 {
   margin-bottom: 2rem;
   color: #21e6c1;
   text-shadow: 0 2px 8px rgba(0,0,0,0.2);
-}
-
-@media (max-width: 1400px) {
-  section {
-    max-width: 98vw;
-    padding-left: 3rem;
-    padding-right: 3rem;
-  }
 }
 
 /* ==========================
@@ -423,6 +417,7 @@ footer a:hover {
     padding: 2rem 0.5rem;
     margin: 1.5rem auto;
     max-width: 98vw;
+    width: 98vw;
   }
 
   .modal-content, #skillsModal .modal-content {
@@ -445,5 +440,12 @@ footer a:hover {
     top: 50vh;
     transform: translate(-50%, -50%) scale(1.1);
     z-index: 30;
+  }
+
+  section {
+    max-width: 80vw;
+    width: 80vw;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }
