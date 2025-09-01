@@ -333,10 +333,11 @@ section h2 {
 }
 
 .skill-card.expanded {
-  width: min(400px, 90vw);
-  height: min(300px, 60vw);
-  min-width: 220px;
-  min-height: 180px;
+  width: min(100%, 360px);
+  aspect-ratio: 4 / 3;
+  height: auto;
+  min-width: 200px;
+  min-height: 150px;
   /* transform moved to JS for accurate centering after layout */
   z-index: 30; /* ensure on top */
   position: relative;
@@ -366,7 +367,7 @@ section h2 {
   .skill-card.expanded > .card-front,
   .skill-card.expanded > .card-back {
     /* use container-relative width to avoid vw shift */
-    width: min(100%, 400px);
+    width: min(100%, 360px);
     /* maintain aspect ratio without relying on vw */
     aspect-ratio: 4 / 3;
     height: auto;
