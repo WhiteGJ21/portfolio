@@ -333,18 +333,18 @@ section h2 {
   transform: scale(0.8);
 }
 
-/* --- Fix skills modal and project modal centering and padding --- */
+/* Fix skills modal and project modal centering and padding */
 #skillsModal .modal-content {
   max-width: 600px;
-  width: 100%;
-  margin: auto;
-  padding: 2rem 2.5rem;
+  width: 90%; /* Adjusted for better mobile view */
+  margin: 10vh auto; /* Center vertically and horizontally */
+  padding: 2rem; /* Consistent padding */
   border-radius: 10px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: center; /* Center content horizontally */
+  justify-content: flex-start; /* Align items to the top */
 }
 
 #skillsGrid {
@@ -354,41 +354,54 @@ section h2 {
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 1rem;
   justify-items: center;
+  align-items: start; /* Align grid items to the start of each cell */
 }
 
 .modal-content {
-  max-width: 800px;
-  width: 100%;
-  margin: auto;
-  padding: 2rem 2.5rem;
-  border-radius: 10px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
+    /* Reduced the max-width and using a % based width for better responsiveness */
+    max-width: 80%;
+    width: auto;
+    margin: 10vh auto; /* This will center the modal vertically and horizontally */
+    padding: 2rem;
+    border-radius: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Changed to flex-start to align content to the left */
+    justify-content: flex-start;
 }
 
-.modal-content h2, .modal-content h3 {
-  margin-top: 0;
-  margin-bottom: 1rem;
+.modal-content h2,
+.modal-content h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
 }
 
-.modal-content p, .modal-content .workflow {
-  margin-bottom: 1.25rem;
-  line-height: 1.7;
+.modal-content p,
+.modal-content .workflow {
+    margin-bottom: 1.25rem;
+    line-height: 1.7;
 }
 
 .grid-card {
-  padding: 1.25rem 1rem;
+    padding: 1.25rem 1rem;
 }
 
 @media (max-width: 700px) {
-  #skillsModal .modal-content, .modal-content {
-    max-width: 98vw;
-    padding: 1rem 0.5rem;
-  }
+
+    #skillsModal .modal-content, .modal-content {
+      max-width: 95vw; /* Adjust for smaller screens */
+      margin: 5vh auto; /* Reduce margin */
+      padding: 1rem;
+    }
+
+    #skillsGrid {
+      grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+      gap: 0.5rem;
+    }
 }
+
+/* === End Modal Changes === */
 
 /* Footer */
 footer {
