@@ -434,6 +434,8 @@ skillCards.forEach(card => {
         e.stopPropagation();
         card.classList.remove("expanded", "flipped", "locked");
         card.style.transform = "";
+        const container = document.querySelector('.skills-container');
+        container.classList.remove('has-expanded');
         // ensure container reflows before showing siblings to avoid layout jump
         requestAnimationFrame(() => {
           skillCards.forEach(c => c.classList.remove("hidden"));
@@ -444,12 +446,15 @@ skillCards.forEach(card => {
     // Hide other cards
     skillCards.forEach(c => { if (c !== card) c.classList.add("hidden"); });
 
+    // Mark container as having an expanded card to add extra spacing
+    const container = document.querySelector(".skills-container");
+    container.classList.add("has-expanded");
+
     // Expand first so layout settles (prevents jerky flip on multi-row)
     card.classList.add("expanded", "flipped", "locked");
 
     // Next frame: either rely on CSS centering (multi-row) or JS centering (single row)
     requestAnimationFrame(() => {
-      const container = document.querySelector(".skills-container");
       const containerRect = container.getBoundingClientRect();
       const cardRect = card.getBoundingClientRect();
 

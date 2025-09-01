@@ -501,7 +501,12 @@ footer a:hover {
 
   /* Add a bit more space before the expanded skills modal */
   #skills h2 {
-    margin-bottom: 2.75rem;
+    margin-bottom: 3.5rem; /* more space above modal */
+  }
+
+  /* when a card is expanded, increase top spacing further to ensure no overlap */
+  #skills .skills-container.has-expanded {
+    margin-top: 2.5rem;
   }
 
   .skill-card.expanded {
