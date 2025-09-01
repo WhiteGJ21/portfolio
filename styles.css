@@ -43,6 +43,7 @@ header, #navbar {
   border-radius: 6px;
   transition: background 0.3s, color 0.3s;
 }
+
 .nav-link:hover {
   background: #1f4068;
   color: #21e6c1;
@@ -59,11 +60,13 @@ section {
   max-width: 1400px;
   box-shadow: 0 2px 16px rgba(0,0,0,0.18);
 }
+
 section h2 {
   color: #21e6c1;
   margin-bottom: 2.5rem;
   text-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
+
 .about-text {
   color: #c7c7c7;
   font-size: 1.1rem;
@@ -82,6 +85,7 @@ section h2 {
   color: #f5f6fa;
   box-shadow: 0 4px 24px rgba(0,0,0,0.25);
 }
+
 #welcome-section h1 {
   font-weight: 700;
   letter-spacing: 1px;
@@ -98,6 +102,7 @@ section h2 {
   margin: 2rem auto;
   overflow: hidden;
 }
+
 .carousel {
   display: flex;
   justify-content: center;
@@ -106,6 +111,7 @@ section h2 {
   perspective: 1000px;
   position: relative;
 }
+
 .project-card {
   position: absolute;
   width: 250px; height: 150px;
@@ -120,17 +126,20 @@ section h2 {
   pointer-events: none;
   transition: transform 0.5s ease, opacity 0.5s ease;
 }
+
 .project-card img {
   max-width: 80%;
   max-height: 60px;
   object-fit: contain;
   margin-bottom: 0.5rem;
 }
+
 .project-card h3 {
   color: #21e6c1;
   font-size: 1.2rem;
   font-weight: 600;
 }
+
 /* carousel positions */
 .project-card.left {
   transform: translateX(-120%) scale(0.85);
@@ -145,6 +154,7 @@ section h2 {
   transform: translateX(120%) scale(0.85);
   opacity: 0.5; z-index: 5;
 }
+
 /* arrows */
 .carousel-arrow {
   position: absolute; top: 50%;
@@ -165,14 +175,14 @@ section h2 {
 /* ==========================
    Skills Cards
 ========================== */
-.skills-container {
-  position: relative; /* ensures expanded stays contextual */
+/* .skills-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 2rem;
   margin-top: 2.5rem;
 }
+
 .skill-card {
   position: relative;
   width: 180px; height: 120px;
@@ -181,6 +191,7 @@ section h2 {
   perspective: 1000px;
   transition: transform 0.6s ease;
 }
+
 .card-front, .card-back {
   position: absolute;
   width: 100%; height: 100%;
@@ -206,24 +217,117 @@ section h2 {
 .skill-card.flipped .card-back {
   transform: rotateY(0); opacity: 1;
 }
-/* FIX: expand in place, not fixed */
 .skill-card.expanded {
-  position: static;
-  width: 400px;
-  max-width: min(92vw, 560px);
-  height: 300px;
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%) scale(1.2);
   z-index: 30;
-  transform: scale(1.2);
 }
 .skill-card.hidden {
   opacity: 0; pointer-events: none; transform: scale(0.8);
+} */
+ .skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+.skill-card {
+  width: 180px;
+  height: 120px;
+  perspective: 1000px;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.6s ease, width 0.6s ease, height 0.6s ease, z-index 0.6s ease;
+}
+
+.card-front, .card-back {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #23272f 80%, #1f4068 100%);
+  color: #21e6c1;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  position: absolute;
+  backface-visibility: hidden;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  padding: 1rem;
+  font-weight: 500;
+}
+
+.card-back {
+  color: #f5f6fa;
+  transform: rotateY(180deg);
+  opacity: 0;
+  overflow-y: auto;
+}
+
+.skill-card.flipped .card-front {
+  transform: rotateY(180deg);
+  opacity: 0;
+}
+
+.skill-card.flipped .card-back {
+  transform: rotateY(0deg);
+  opacity: 1;
+}
+
+.skill-card.expanded {
+  width: 400px;
+  height: 300px;
+  transform: scale(1.2) translateX(0);
+  z-index: 10;
+}
+
+/* Hide non-expanded cards */
+.skill-card.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.8);
+}
+
+/* Skills modal tweaks */
+#skillsModal .modal-content {
+  max-width: 500px;
+  width: 95vw;
+  margin: 2rem auto;
+  padding: 2.5rem 2rem;
+  border-radius: 16px;
+  box-sizing: border-box;
+}
+
+#skillsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+#skillsGrid div {
+  background: #23272f;
+  color: #21e6c1;
+  padding: 0.5rem;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+#skillsGrid div[data-skill="languages"] {
+  column-count: 2;
+  column-gap: 0.5rem;
 }
 
 /* ==========================
    Modals
 ========================== */
 .modal {
-  display: none;
+  display: none; 
   position: fixed;
   inset: 0;
   z-index: 200;
@@ -236,6 +340,7 @@ section h2 {
   justify-content: center;
   align-items: center;
 }
+
 .modal-content {
   background: linear-gradient(135deg, #23272f 80%, #1f4068 100%);
   color: #f5f6fa;
@@ -243,11 +348,13 @@ section h2 {
   padding: 2rem;
   border-radius: 10px;
   max-width: 800px;
-  width: 100%;
+  width: 100%;   /* stretch inside modal, but constrained by max-width */
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
+
+
 .modal-close {
   align-self: flex-end;
   background: none; border: none;
@@ -257,6 +364,7 @@ section h2 {
   transition: color 0.3s;
 }
 .modal-close:hover { color: #f5f6fa; }
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
@@ -298,8 +406,10 @@ footer a:hover { color: #21e6c1; }
   .about-text { font-size: 1rem; }
   section { padding: 2rem 0.5rem; margin: 1.5rem auto; max-width: 98vw; }
   .modal-content { padding: 1.5rem; margin: 2rem auto; max-width: 95vw; }
+  #skillsGrid { grid-template-columns: repeat(auto-fit, minmax(100px,1fr)); }
 }
+
 @media (max-width: 1500px) {
   .skills-container { flex-wrap: wrap; gap: 1.5rem; }
-  .skill-card.expanded { transform: scale(1.1); }
+  .skill-card.expanded { transform: translate(-50%, -50%) scale(1.1); }
 }
