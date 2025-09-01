@@ -94,8 +94,8 @@ section h2 {
 @media (max-width: 1400px) {
   section {
     max-width: 98vw;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
   }
 }
 
