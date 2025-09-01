@@ -359,12 +359,17 @@ section h2 {
     justify-content: center;
     width: 100%;
     height: auto;
+    /* ensure centering within padded section */
+    margin-inline: auto;
   }
   /* center the inner card block when expanded */
   .skill-card.expanded > .card-front,
   .skill-card.expanded > .card-back {
-    width: min(95vw, 400px);
-    height: min(60vw, 300px);
+    /* use container-relative width to avoid vw shift */
+    width: min(100%, 400px);
+    /* maintain aspect ratio without relying on vw */
+    aspect-ratio: 4 / 3;
+    height: auto;
     min-width: 180px;
     min-height: 120px;
     box-shadow: 0 10px 32px rgba(0,0,0,0.35);
@@ -373,11 +378,32 @@ section h2 {
 
 @media (max-width: 600px) {
   .skill-card.expanded {
-    width: 98vw;
-    height: 60vw;
-    min-width: 120px;
-    min-height: 100px;
+    /* keep consistency with 900px rule and avoid vw */
+    width: 100%;
+    height: auto;
+    margin-inline: auto;
   }
+  .skill-card.expanded > .card-front,
+  .skill-card.expanded > .card-back {
+    width: min(100%, 360px); /* slightly smaller max on very small screens */
+    aspect-ratio: 4 / 3;
+    height: auto;
+    min-width: 150px;
+    min-height: 110px;
+  }
+}
+
+/* Center skills container on small screens */
+@media (max-width: 900px) {
+  .skills-container {
+    justify-content: center; /* reinforce centering */
+    align-items: center;     /* vertically center items */
+  }
+}
+
+/* Normalize section horizontal padding responsively */
+section {
+  padding-inline: clamp(1rem, 4vw, 2.5rem);
 }
 
 /* Hide non-expanded cards */
