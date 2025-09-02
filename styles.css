@@ -51,7 +51,7 @@ header, #navbar {
 
 .nav-link:hover {
   background: #1f4068;
-  color: #46a034;
+  color: #2e6b52;
 }
 
 /* ==========================
@@ -89,7 +89,7 @@ section {
 section h2 {
   font-size: 2.5rem;
   margin-bottom: clamp(2rem, 1rem + 2vw, 3rem);
-  color: #46a034;
+  color: #2e6b52;
   text-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
@@ -157,7 +157,7 @@ section h2 {
 
 .project-card h3 {
   font-size: 1.2rem;
-  color: #46a034;
+  color: #2e6b52;
   font-weight: 600;
 }
 
@@ -189,7 +189,7 @@ section h2 {
   transform: translateY(-50%);
   font-size: 2rem;
   background: #2a2f3a;
-  color: #46a034;
+  color: #2e6b52;
   box-shadow: 0 2px 8px rgba(0,0,0,0.18);
   border: none;
   border-radius: 50%;
@@ -200,7 +200,7 @@ section h2 {
 }
 
 .carousel-arrow:hover {
-  background: #46a034;
+  background: #2e6b52;
   color: #2a2f3a;
 }
 
@@ -240,7 +240,7 @@ section h2 {
   float: right;
   font-size: 1.5rem;
   cursor: pointer;
-  color: #46a034;
+  color: #2e6b52;
   background: none;
   border: none;
   transition: color 0.3s;
@@ -305,7 +305,7 @@ section h2 {
   justify-content: center;
   align-items: center;
   background: linear-gradient(135deg, #2a2f3a 80%, #1f4068 100%);
-  color: #46a034;
+  color: #2e6b52;
   box-shadow: 0 2px 8px rgba(0,0,0,0.18);
   position: absolute;
   backface-visibility: hidden;
@@ -441,7 +441,7 @@ section {
   border-radius: 6px;
   text-align: center;
   font-size: 0.9rem;
-  color: #46a034;
+  color: #2e6b52;
 }
 
 /* ==========================
@@ -465,7 +465,7 @@ footer a {
 }
 
 footer a:hover {
-  color: #46a034;
+  color: #2e6b52;
 }
 
 /* ==========================
