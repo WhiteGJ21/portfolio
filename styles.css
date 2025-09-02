@@ -136,7 +136,7 @@ section h2 {
   border-radius: 12px;
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
   text-align: center;
-  background: linear-gradient(135deg, #23272f 80%, #1f4068 100%);
+  background: linear-gradient(135deg, #2a2f3a 80%, #1f4068 100%);
   color: #f5f6fa;
   display: flex;
   flex-direction: column;
@@ -188,7 +188,7 @@ section h2 {
   top: 50%;
   transform: translateY(-50%);
   font-size: 2rem;
-  background: #23272f;
+  background: #2a2f3a;
   color: #46a034;
   box-shadow: 0 2px 8px rgba(0,0,0,0.18);
   border: none;
@@ -201,7 +201,7 @@ section h2 {
 
 .carousel-arrow:hover {
   background: #46a034;
-  color: #23272f;
+  color: #2a2f3a;
 }
 
 .left-arrow { left: 0; }
@@ -222,7 +222,7 @@ section h2 {
 }
 
 .modal-content {
-  background: linear-gradient(135deg, #23272f 80%, #1f4068 100%);
+  background: linear-gradient(135deg, #2a2f3a 80%, #1f4068 100%);
   color: #f5f6fa;
   box-shadow: 0 10px 32px rgba(0,0,0,0.35);
   margin: 2rem auto;
@@ -258,7 +258,7 @@ section h2 {
 }
 
 .grid-card {
-  background: #23272f;
+  background: #2a2f3a;
   color: #f5f6fa;
   padding: 1.25rem 1rem;
   border-radius: 10px;
@@ -304,7 +304,7 @@ section h2 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #23272f 80%, #1f4068 100%);
+  background: linear-gradient(135deg, #2a2f3a 80%, #1f4068 100%);
   color: #46a034;
   box-shadow: 0 2px 8px rgba(0,0,0,0.18);
   position: absolute;
@@ -436,7 +436,7 @@ section {
 }
 
 #skillsGrid div {
-  background: #23272f;
+  background: #2a2f3a;
   padding: 0.5rem;
   border-radius: 6px;
   text-align: center;
