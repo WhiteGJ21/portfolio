@@ -306,9 +306,10 @@ section h2 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #2a2f3a 80%, #1f4068 100%);
+  background: linear-gradient(135deg, #343b4a 80%, #2b5c8a 100%); /* match project card contrast */
+  border: 1px solid rgba(255,255,255,0.06);
   color: #0f754c;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  box-shadow: 0 3px 12px rgba(0,0,0,0.22);
   position: absolute;
   backface-visibility: hidden;
   transition: transform 0.45s cubic-bezier(.2,.8,.2,1), opacity 0.3s ease;
