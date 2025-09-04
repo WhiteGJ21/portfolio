@@ -9,6 +9,13 @@
   scroll-behavior: smooth;
 }
 
+:root {
+  --accent: #3B74B4;           /* light blue accent */
+  --card-bg: #4A4F5E;          /* lighter neutral gray for cards */
+  --card-border: #7A8492;      /* solid outline color */
+  --card-bg-hover: #5A6172;    /* slightly lighter on hover */
+}
+
 body, main {
   background: #181a20;
   color: #f5f6fa;
@@ -51,7 +58,7 @@ header, #navbar {
 
 .nav-link:hover {
   background: #1f4068;
-  color: #0f754c;
+  color: var(--accent);
 }
 
 /* ==========================
@@ -89,7 +96,7 @@ section {
 section h2 {
   font-size: 2.5rem;
   margin-bottom: clamp(2rem, 1rem + 2vw, 3rem);
-  color: #0f754c;
+  color: var(--accent);
   text-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
@@ -136,8 +143,8 @@ section h2 {
   border-radius: 12px;
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
   text-align: center;
-  background: linear-gradient(135deg, #343b4a 80%, #2b5c8a 100%); /* slightly lighter for contrast */
-  border: 1px solid rgba(255,255,255,0.06); /* subtle edge to separate from backdrop */
+  background: var(--card-bg);
+  border: 2px solid var(--card-border);
   color: #f5f6fa;
   display: flex;
   flex-direction: column;
@@ -146,7 +153,7 @@ section h2 {
   opacity: 0;
   transform: scale(0.8);
   pointer-events: none;
-  transition: transform 0.5s ease, opacity 0.5s ease;
+  transition: transform 0.5s ease, opacity 0.5s ease, background 0.3s ease;
 }
 
 .project-card img {
@@ -158,7 +165,7 @@ section h2 {
 
 .project-card h3 {
   font-size: 1.2rem;
-  color: #0f754c;
+  color: var(--accent);
   font-weight: 600;
 }
 
@@ -190,7 +197,7 @@ section h2 {
   transform: translateY(-50%);
   font-size: 2rem;
   background: #2a2f3a;
-  color: #0f754c;
+  color: var(--accent);
   box-shadow: 0 2px 8px rgba(0,0,0,0.18);
   border: none;
   border-radius: 50%;
@@ -201,7 +208,7 @@ section h2 {
 }
 
 .carousel-arrow:hover {
-  background: #0f754c;
+  background: var(--accent);
   color: #2a2f3a;
 }
 
@@ -241,7 +248,7 @@ section h2 {
   float: right;
   font-size: 1.5rem;
   cursor: pointer;
-  color: #0f754c;
+  color: var(--accent);
   background: none;
   border: none;
   transition: color 0.3s;
@@ -259,19 +266,19 @@ section h2 {
 }
 
 .grid-card {
-  background: #343b4a; /* slightly lighter for contrast in modal */
+  background: var(--card-bg);
   color: #f5f6fa;
   padding: 1.25rem 1rem;
   border-radius: 10px;
   cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
-  border: 1px solid rgba(255,255,255,0.06); /* subtle outline to separate from backdrop */
+  border: 2px solid var(--card-border);
   box-shadow: 0 3px 12px rgba(0,0,0,0.22);
 }
 
 .grid-card:hover {
   transform: scale(1.05);
-  background: #1f4068;
+  background: var(--card-bg-hover);
   box-shadow: 0 6px 24px rgba(0,0,0,0.25);
 }
 
@@ -306,13 +313,13 @@ section h2 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #343b4a 80%, #2b5c8a 100%); /* match project card contrast */
-  border: 1px solid rgba(255,255,255,0.06);
-  color: #0f754c;
+  background: var(--card-bg);
+  border: 2px solid var(--card-border);
+  color: var(--accent);
   box-shadow: 0 3px 12px rgba(0,0,0,0.22);
   position: absolute;
   backface-visibility: hidden;
-  transition: transform 0.45s cubic-bezier(.2,.8,.2,1), opacity 0.3s ease;
+  transition: transform 0.45s cubic-bezier(.2,.8,.2,1), opacity 0.3s ease, background 0.3s ease;
   padding: 1rem;
   font-weight: 500;
   transform-style: preserve-3d;
@@ -444,7 +451,7 @@ section {
   border-radius: 6px;
   text-align: center;
   font-size: 0.9rem;
-  color: #0f754c;
+  color: var(--accent);
 }
 
 /* ==========================
@@ -468,7 +475,7 @@ footer a {
 }
 
 footer a:hover {
-  color: #0f754c;
+  color: var(--accent);
 }
 
 /* ==========================
