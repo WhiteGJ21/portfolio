@@ -11,6 +11,7 @@
 
 :root {
   --accent: #3B74B4;           /* light blue accent */
+  --card-accent: #66B2FF;      /* brighter for readability on cards */
   --card-bg: #4A4F5E;          /* lighter neutral gray for cards */
   --card-border: #7A8492;      /* solid outline color */
   --card-bg-hover: #5A6172;    /* slightly lighter on hover */
@@ -165,7 +166,7 @@ section h2 {
 
 .project-card h3 {
   font-size: 1.2rem;
-  color: var(--accent);
+  color: var(--card-accent);
   font-weight: 600;
 }
 
@@ -315,7 +316,7 @@ section h2 {
   align-items: center;
   background: var(--card-bg);
   border: 2px solid var(--card-border);
-  color: var(--accent);
+  color: var(--card-accent);
   box-shadow: 0 3px 12px rgba(0,0,0,0.22);
   position: absolute;
   backface-visibility: hidden;
