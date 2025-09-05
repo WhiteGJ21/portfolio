@@ -303,7 +303,19 @@ function renderCategoryGrid(category) {
   modalBody.innerHTML = `<h2>${category.toUpperCase()} Projects</h2><div class="grid"></div>`;
   const grid = modalBody.querySelector('.grid');
 
-  projectData[category].forEach(proj => {
+  const items = projectData[category];
+  const n = items.length;
+  // Choose a professional layout based on count
+  let layoutClass = 'layout-1x1';
+  if (n === 1) layoutClass = 'layout-1x1';
+  else if (n === 2) layoutClass = 'layout-1x2';
+  else if (n === 3) layoutClass = 'layout-1x3';
+  else if (n === 4) layoutClass = 'layout-2x2';
+  else if (n === 5) layoutClass = 'layout-2x2'; // 4 visible wide, 1 wraps nicely
+  else layoutClass = 'layout-1x3'; // 6+ falls into responsive 3 per row
+  grid.classList.add(layoutClass);
+
+  items.forEach(proj => {
     const div = document.createElement('div');
     div.className = 'grid-card';
     div.innerHTML = `<h3>${proj.name}</h3><p>${proj.description}</p>`;

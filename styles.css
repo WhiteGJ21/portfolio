@@ -246,7 +246,9 @@ section h2 {
 }
 
 .modal-close {
-  float: right;
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
   font-size: 1.5rem;
   cursor: pointer;
   color: var(--accent);
@@ -461,6 +463,7 @@ section {
   width: min(92vw, 900px);
   align-items: center; /* center inner content */
   text-align: center;  /* center headings and inline content */
+  position: relative;  /* anchor for absolute close button */
 }
 
 #projectModal #modal-body {
@@ -474,12 +477,35 @@ section {
 
 /* Grid view inside project modal */
 #projectModal #modal-body .grid {
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  display: grid;
   gap: 1rem;
   width: 100%;
   max-width: 900px;
   margin: 1rem auto; /* center the grid block */
   justify-items: center; /* center grid items within their cells */
+}
+
+/* Grid layout variants for project modal */
+#projectModal #modal-body .grid.layout-1x3 {
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+}
+#projectModal #modal-body .grid.layout-2x2 {
+  grid-template-columns: repeat(2, minmax(240px, 1fr));
+}
+#projectModal #modal-body .grid.layout-1x2 {
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+}
+#projectModal #modal-body .grid.layout-1x1 {
+  grid-template-columns: 1fr;
+}
+
+/* Responsive fallback */
+@media (max-width: 700px) {
+  #projectModal #modal-body .grid.layout-1x3,
+  #projectModal #modal-body .grid.layout-2x2,
+  #projectModal #modal-body .grid.layout-1x2 {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Detail view paragraphs (keep readable width) */
