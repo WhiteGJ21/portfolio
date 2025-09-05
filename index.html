@@ -156,6 +156,27 @@ const closeBtn = document.querySelector('.modal-close');
 
 let currentCategory = null;
 
+// Equalize grid card heights in the project modal to the tallest card
+function equalizeProjectGridHeights() {
+  const grid = modalBody.querySelector('.grid');
+  if (!grid) return;
+  const cards = Array.from(grid.querySelectorAll('.grid-card'));
+  if (cards.length === 0) return;
+  // Reset to natural height before measuring
+  cards.forEach(card => { card.style.height = 'auto'; });
+  // Measure tallest
+  const maxHeight = Math.max(...cards.map(c => c.offsetHeight));
+  // Apply uniform height
+  cards.forEach(card => { card.style.height = `${maxHeight}px`; });
+}
+
+// Re-equalize on resize when modal is open
+window.addEventListener('resize', () => {
+  if (modal.style.display === 'block' && currentCategory) {
+    equalizeProjectGridHeights();
+  }
+});
+
 // Project data
 const projectData = {
   capstone: {
@@ -329,13 +350,15 @@ function renderCategoryGrid(category) {
         ${proj.tech ? `<p><strong>Languages:</strong> ${proj.tech.join(', ')}</p>` : ""}
         ${proj.tools ? `<p><strong>Tools:</strong> ${proj.tools.join(', ')}</p>` : ""}
         ${proj.platform ? `<p><strong>Platform:</strong> ${proj.platform}</p>` : ""}
-        ${proj.workflow ? `<div class="workflow"><h3>Workflow</h3><p>${proj.workflow}</p></div>` : ""}
-        <button id="backBtn">← Back</button>
+        ${proj.workflow ? `<div class=\"workflow\"><h3>Workflow</h3><p>${proj.workflow}</p></div>` : ""}
+        <button id=\"backBtn\">← Back</button>
       `;
 
       // Back button returns to category grid
       document.getElementById('backBtn').addEventListener('click', () => {
         renderCategoryGrid(category);
+        // Re-equalize after returning to grid
+        setTimeout(equalizeProjectGridHeights, 0);
       });
     });
 
@@ -343,6 +366,8 @@ function renderCategoryGrid(category) {
   });
 
   modal.style.display = "block";
+  // Equalize heights after content is in DOM
+  requestAnimationFrame(equalizeProjectGridHeights);
 }
 
 // Click on category cards
