@@ -455,6 +455,39 @@ section {
   color: var(--accent);
 }
 
+/* Project modal tweaks */
+#projectModal .modal-content {
+  max-width: 900px;
+  width: min(92vw, 900px);
+  align-items: center; /* center inner content */
+  text-align: center;  /* center headings and inline content */
+}
+
+#projectModal #modal-body {
+  width: 100%;
+}
+
+#projectModal #modal-body > h2 {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+/* Grid view inside project modal */
+#projectModal #modal-body .grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  width: 100%;
+  max-width: 900px;
+  margin: 1rem auto; /* center the grid block */
+  justify-items: center; /* center grid items within their cells */
+}
+
+/* Detail view paragraphs (keep readable width) */
+#projectModal #modal-body p {
+  max-width: 75ch;
+  margin: 0.5rem auto; /* center within modal */
+}
+
 /* ==========================
    Footer
 ========================== */
