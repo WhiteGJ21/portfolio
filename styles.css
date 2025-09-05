@@ -166,7 +166,7 @@ section h2 {
 
 .project-card h3 {
   font-size: 1.2rem;
-  color: var(--card-accent);
+  color: #f5f6fa; /* make project card headings white */
   font-weight: 600;
 }
 
@@ -316,7 +316,7 @@ section h2 {
   align-items: center;
   background: var(--card-bg);
   border: 2px solid var(--card-border);
-  color: var(--card-accent);
+  color: #f5f6fa; /* make skill card text white */
   box-shadow: 0 3px 12px rgba(0,0,0,0.22);
   position: absolute;
   backface-visibility: hidden;
