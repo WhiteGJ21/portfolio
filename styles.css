@@ -58,8 +58,8 @@ header, #navbar {
 }
 
 .nav-link:hover {
-  background: #1f4068;
-  color: var(--accent);
+  background: #1a2c4a; /* Darker background for better contrast */
+  color: #ffffff; /* Bright white text for maximum readability */
 }
 
 /* ==========================
@@ -543,7 +543,8 @@ footer a {
 }
 
 footer a:hover {
-  color: var(--accent);
+  color: #ffffff; /* Bright white text for maximum readability */
+  text-decoration: underline; /* Adding underline for additional visual cue */
 }
 
 /* ==========================
@@ -659,5 +660,6 @@ footer a {
 }
 
 footer a:hover {
-  color: var(--accent);
+  color: #ffffff; /* Bright white text for maximum readability */
+  text-decoration: underline; /* Adding underline for additional visual cue */
 }
