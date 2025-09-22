@@ -543,12 +543,12 @@ section {
 
 #projectModal #modal-body > h2 {
   width: 100%;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem; /* reduced from 1rem */
   text-align: center;
 }
 #projectModal #modal-body > .project-description {
   text-align: center;
-  margin: 0.5rem auto 1.5rem auto;
+  margin: 0.25rem auto 1.25rem auto; /* reduced top margin */
   line-height: 1.6;
   width: 100%;
   max-width: 75ch;
