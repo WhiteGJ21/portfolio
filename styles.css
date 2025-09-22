@@ -277,6 +277,12 @@ section h2 {
   color: #f5f6fa;
 }
 
+.project-description {
+  text-align: center;
+  margin: 0.5rem 0;
+  line-height: 1.6;
+}
+
 /* Workflow section styling */
 .workflow {
   margin-top: 1.5rem;

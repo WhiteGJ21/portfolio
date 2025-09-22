@@ -346,12 +346,12 @@ function renderCategoryGrid(category) {
       e.stopPropagation();
       modalBody.innerHTML = `
         <h2>${proj.name}</h2>
-        <p>${proj.description}</p>
+        <p class="project-description">${proj.description}</p>
         ${proj.tech ? `<p><strong>Languages:</strong> ${proj.tech.join(', ')}</p>` : ""}
         ${proj.tools ? `<p><strong>Tools:</strong> ${proj.tools.join(', ')}</p>` : ""}
         ${proj.platform ? `<p><strong>Platform:</strong> ${proj.platform}</p>` : ""}
         ${proj.workflow ? `<div class=\"workflow\"><h3>Workflow</h3><p>${proj.workflow}</p></div>` : ""}
-        <button id=\"backBtn\">← Back</button>
+        <button id=\"backBtn\">←</button>
       `;
 
       // Back button returns to category grid
