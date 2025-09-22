@@ -249,15 +249,23 @@ section h2 {
   position: absolute;
   top: 0.75rem;
   right: 0.75rem;
-  font-size: 1.5rem;
+  font-size: 2rem;
   cursor: pointer;
   color: var(--accent);
-  background: none;
-  border: none;
-  transition: color 0.3s;
+  background: var(--card-bg);
+  border: 2px solid var(--card-border);
+  border-radius: 6px;
+  padding: 0.5rem;
+  transition: background 0.3s, color 0.3s;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .modal-close:hover {
+  background: var(--card-bg-hover);
   color: #f5f6fa;
 }
 
@@ -265,15 +273,23 @@ section h2 {
   position: absolute;
   top: 0.75rem;
   left: 0.75rem;
-  font-size: 1.5rem;
+  font-size: 2rem;
   cursor: pointer;
   color: var(--accent);
-  background: none;
-  border: none;
-  transition: color 0.3s;
+  background: var(--card-bg);
+  border: 2px solid var(--card-border);
+  border-radius: 6px;
+  padding: 0.5rem;
+  transition: background 0.3s, color 0.3s;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #backBtn:hover {
+  background: var(--card-bg-hover);
   color: #f5f6fa;
 }
 
