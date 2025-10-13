@@ -313,8 +313,8 @@ section h2 {
 
 /* Make the SVG scale to fit the button */
 #backBtn svg {
-  width: 60%;   /* Adjust size of arrow */
-  height: 60%;
+  width: 80%;   /* Adjust size of arrow */
+  height: 80%;
 }
 
 #backBtn:hover {
