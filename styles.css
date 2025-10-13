@@ -417,7 +417,7 @@ section h2 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: var(--card-bg);
+  background: #21232d;
   border: 2px solid var(--card-border);
   color: #f5f6fa; /* make skill card text white */
   box-shadow: 0 3px 12px rgba(0,0,0,0.22);
