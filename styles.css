@@ -271,8 +271,8 @@ section h2 {
 }
 
 .close-btn svg {
-  width: 80%;   /* adjust size */
-  height: 80%;
+  width: 10%;   /* adjust size */
+  height: 10%;
 }
 
 #backBtn, #close-btn {
