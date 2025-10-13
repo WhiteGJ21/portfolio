@@ -245,7 +245,27 @@ section h2 {
   justify-content: center;
 }
 
-.modal-close, .close-btn {
+.close-btn {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 2.5rem;
+  height: 2.5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--card-bg);
+  border: 2px solid var(--card-border);
+  border-radius: 6px;
+  cursor: pointer;
+  color: var(--accent);
+  padding: 0;
+  transition: background 0.3s, color 0.3s, transform 0.2s;
+}
+
+.modal-close {
   position: absolute;
   top: 0.75rem;
   right: 0.75rem;
