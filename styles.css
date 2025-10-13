@@ -303,7 +303,7 @@ section h2 {
   justify-content: center;
 
   font-size: 1.8rem;       /* Arrow size */
-  line-height: 1;          /* Prevent baseline issues */
+  line-height: 0;          /* Prevent baseline issues */
   
   cursor: pointer;
   color: var(--accent);
@@ -313,6 +313,12 @@ section h2 {
   
   padding: 0;
   transition: background 0.3s, color 0.3s, transform 0.2s;
+}
+
+#backBtn span {
+  display: inline-block;
+  vertical-align: middle;   /* aligns the character properly */
+  line-height: 1;
 }
 
 #backBtn:hover {
