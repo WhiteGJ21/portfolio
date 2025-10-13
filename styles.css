@@ -288,7 +288,7 @@ section h2 {
   align-items: center;
   justify-content: center;
   line-height: 1;
-  transform: translateY(-4px);
+  transform: translateY(4px);
 }
 
 #backBtn:hover {
