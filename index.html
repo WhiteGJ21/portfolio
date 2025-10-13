@@ -314,37 +314,6 @@ Throughout the process, I collaborated with senior engineers for guidance, but I
   ]
 };
 
-function renderProjectDetail(project, options = {}) {
-  const { showBackButton = false, onBack } = options;
-  const title = project.title || project.name || "Project";
-  const descriptionContent = project.description || "";
-  const hasMarkup = /<\/?[a-z][\s\S]*>/i.test(descriptionContent);
-  const descriptionHTML = hasMarkup ? descriptionContent : `<p>${descriptionContent}</p>`;
-  const techSection = project.tech && project.tech.length ? `<p class="project-meta"><strong>Languages:</strong> ${project.tech.join(', ')}</p>` : "";
-  const toolsSection = project.tools && project.tools.length ? `<p class="project-meta"><strong>Tools:</strong> ${project.tools.join(', ')}</p>` : "";
-  const platformSection = project.platform ? `<p class="project-meta"><strong>Platform:</strong> ${project.platform}</p>` : "";
-  const workflowSection = project.workflow ? `<div class="workflow"><h3 class="workflow-title">Workflow</h3>${project.workflow}</div>` : "";
-  const backButton = showBackButton ? `<button id="backBtn">←</button>` : "";
-
-  modalBody.innerHTML = `
-    <h2 class="project-title">${title}</h2>
-    ${descriptionContent ? `<div class="project-description">${descriptionHTML}</div>` : ""}
-    ${techSection}
-    ${toolsSection}
-    ${platformSection}
-    ${workflowSection}
-    ${backButton}
-  `;
-
-  if (showBackButton && typeof onBack === "function") {
-    document.getElementById("backBtn").addEventListener("click", () => {
-      onBack();
-    });
-  }
-
-  modal.style.display = "block";
-}
-
 // Function to render a category grid
 function renderCategoryGrid(category) {
   currentCategory = category;
@@ -371,9 +340,21 @@ function renderCategoryGrid(category) {
     // Open project detail on click
     div.addEventListener('click', (e) => {
       e.stopPropagation();
-      renderProjectDetail(proj, {
-        showBackButton: true,
-        onBack: () => renderCategoryGrid(category)
+      modalBody.innerHTML = `
+        <h2>${proj.name}</h2>
+        <p class="project-description">${proj.description}</p>
+        ${proj.tech ? `<p><strong>Languages:</strong> ${proj.tech.join(', ')}</p>` : ""}
+        ${proj.tools ? `<p><strong>Tools:</strong> ${proj.tools.join(', ')}</p>` : ""}
+        ${proj.platform ? `<p><strong>Platform:</strong> ${proj.platform}</p>` : ""}
+        ${proj.workflow ? `<div class=\"workflow\"><h3>Workflow</h3><p>${proj.workflow}</p></div>` : ""}
+        <button id=\"backBtn\">←</button>
+      `;
+
+      // Back button returns to category grid
+      document.getElementById('backBtn').addEventListener('click', () => {
+        renderCategoryGrid(category);
+        // Re-equalize after returning to grid
+        setTimeout(equalizeProjectGridHeights, 0);
       });
     });
 
@@ -391,7 +372,15 @@ cards.forEach(card => {
     const category = card.getAttribute('data-category');
 
     if (category === "capstone") {
-      renderProjectDetail(projectData.capstone);
+      const p = projectData.capstone;
+      modalBody.innerHTML = `
+        <h2>${p.title}</h2>
+        <p><strong>Tech:</strong> ${p.tech.join(', ')}</p>
+        <p><strong>Tools:</strong> ${p.tools.join(', ')}</p>
+        <p><strong>Platform:</strong> ${p.platform}</p>
+        <p>${p.description}</p>
+      `;
+      modal.style.display = "block";
     } else {
       renderCategoryGrid(category);
     }
