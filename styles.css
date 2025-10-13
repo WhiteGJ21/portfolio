@@ -285,7 +285,7 @@ section h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  line-height: 1;
+  /* line-height: 1; */
 }
 
 #backBtn:hover {
@@ -537,7 +537,7 @@ section {
 
 #projectModal #modal-body {
   width: 100%;
-  padding-top: 3rem; /* space for absolute buttons */
+  padding-top: 2rem; /* space for absolute buttons */
 }
 
 #projectModal #modal-body > h2 {
