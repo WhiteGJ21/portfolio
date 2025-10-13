@@ -281,11 +281,13 @@ section h2 {
   border: 2px solid var(--card-border);
   border-radius: 6px;
   /* padding: 0.15rem; */
+  height: 2.5rem;
+  width: 2.5rem;
   transition: background 0.3s, color 0.3s;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* line-height: 1; */
+  line-height: 0;
 }
 
 #backBtn:hover {
