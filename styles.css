@@ -331,30 +331,6 @@ section h2 {
   margin-bottom: 0.5rem;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.grid-card {
-  background: var(--card-bg);
-  color: #f5f6fa;
-  padding: 1.25rem 1rem;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
-  border: 2px solid var(--card-border);
-  box-shadow: 0 3px 12px rgba(0,0,0,0.22);
-}
-
-.grid-card:hover {
-  transform: scale(1.05);
-  background: var(--card-bg-hover);
-  box-shadow: 0 6px 24px rgba(0,0,0,0.25);
-}
-
 /* ==========================
    Skills Section
 ========================== */
@@ -606,6 +582,50 @@ section {
   margin: 0.5rem 0; /* left-aligned */
   text-align: left;
   line-height: 1.6;
+}
+
+/* --- Capstone modal styling to match standard project modals --- */
+/* Capstone modal uses the same modal as other projects, so ensure the same selectors apply */
+#projectModal .modal-content {
+  max-width: 900px;
+  width: min(92vw, 900px);
+  align-items: center;
+  text-align: left;
+  position: relative;
+  background: #21232d;
+}
+#projectModal #modal-body > h2 {
+  width: 100%;
+  margin-bottom: 0;
+  margin-top: 0;
+  text-align: center;
+  display: block;
+  font-size: 2rem;
+}
+#projectModal #modal-body > .project-description {
+  text-align: center;
+  margin: 0 auto;
+  line-height: 1.6;
+  width: 100%;
+  max-width: 75ch;
+  display: block;
+}
+#projectModal #modal-body p {
+  max-width: 75ch;
+  margin: 0.5rem 0;
+  text-align: left;
+  line-height: 1.6;
+}
+#projectModal #modal-body .workflow {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #7A8492;
+}
+#projectModal #modal-body .workflow h3 {
+  font-size: 1.2rem;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+  text-align: left;
 }
 
 /* ==========================
