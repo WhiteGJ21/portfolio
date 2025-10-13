@@ -565,7 +565,7 @@ section {
   gap: 1rem;
   width: 100%;
   max-width: 900px;
-  margin: 1rem auto; /* center the grid block */
+  margin: 2.5rem auto 1rem auto; /* center the grid block */
   justify-items: stretch; /* allow cards to stretch uniformly */
   align-items: stretch;
 }
