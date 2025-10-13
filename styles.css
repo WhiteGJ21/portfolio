@@ -530,6 +530,7 @@ section {
 
 /* Skills modal tweaks */
 #skillsModal .modal-content {
+  background: #21232d;
   max-width: 600px;
   width: 90%;
   margin: 10vh auto;
