@@ -292,24 +292,29 @@ section h2 {
 } */
 
 #backBtn {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  width: 2.5rem;
+  height: 2.5rem;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
+
   background: var(--card-bg);
   border: 2px solid var(--card-border);
   border-radius: 6px;
   cursor: pointer;
   padding: 0;
   color: var(--accent);
+  transition: background 0.3s, color 0.3s, transform 0.2s;
 }
 
-
-#backBtn span {
-  display: inline-block;
-  vertical-align: middle;   /* aligns the character properly */
-  line-height: 1;
+/* Make the SVG scale to fit the button */
+#backBtn svg {
+  width: 60%;   /* Adjust size of arrow */
+  height: 60%;
 }
 
 #backBtn:hover {
