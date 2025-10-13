@@ -602,7 +602,6 @@ section {
 
 /* Detail view paragraphs (keep readable width) */
 #projectModal #modal-body p {
-  max-width: 75ch;
   margin: 0.5rem 0; /* left-aligned */
   text-align: left;
   line-height: 1.6;
