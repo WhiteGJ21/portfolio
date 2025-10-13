@@ -747,3 +747,83 @@ footer a {
 footer a:hover {
   color: var(--card-accent); /* Using the brighter blue for better visibility */
 }
+
+/* --- Unique Capstone Project Modal Styling --- */
+#projectModal.capstone-modal .modal-content {
+  max-width: 950px;
+  width: min(96vw, 950px);
+  background: linear-gradient(120deg, #3B74B4 0%, #232a3d 100%);
+  color: #fff;
+  border: 3px solid #66B2FF;
+  box-shadow: 0 12px 48px rgba(59,116,180,0.25), 0 2px 16px rgba(0,0,0,0.18);
+  border-radius: 22px;
+  padding: 2.5rem 3rem 2.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+#projectModal.capstone-modal #modal-body > h2 {
+  font-size: 2.4rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  background: linear-gradient(90deg, #66B2FF 40%, #fff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+#projectModal.capstone-modal #modal-body .project-description {
+  font-size: 1.15rem;
+  color: #e0eaff;
+  margin: 0.5rem auto 1.5rem auto;
+  text-align: center;
+  max-width: 80ch;
+}
+#projectModal.capstone-modal #modal-body .project-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem 2.5rem;
+  margin-bottom: 2rem;
+}
+#projectModal.capstone-modal #modal-body .project-info p {
+  background: rgba(102,178,255,0.08);
+  border-radius: 8px;
+  padding: 0.5rem 1.2rem;
+  color: #b3d8ff;
+  font-size: 1rem;
+  margin: 0;
+}
+#projectModal.capstone-modal #modal-body .workflow {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 2px dashed #66B2FF;
+  background: rgba(59,116,180,0.07);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(59,116,180,0.08);
+}
+#projectModal.capstone-modal #modal-body .workflow h3 {
+  font-size: 1.3rem;
+  color: #66B2FF;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  letter-spacing: 1px;
+}
+#projectModal.capstone-modal #modal-body .workflow p {
+  color: #e0eaff;
+  font-size: 1.05rem;
+  text-align: left;
+}
+@media (max-width: 700px) {
+  #projectModal.capstone-modal .modal-content {
+    padding: 1.2rem 0.5rem;
+    max-width: 99vw;
+  }
+  #projectModal.capstone-modal #modal-body > h2 {
+    font-size: 1.5rem;
+  }
+}
