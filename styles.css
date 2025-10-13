@@ -280,14 +280,14 @@ section h2 {
   background: var(--card-bg);
   border: 2px solid var(--card-border);
   border-radius: 6px;
-  /* padding: 0.15rem; */
+  padding: 0;
   height: 2.5rem;
   width: 2.5rem;
   transition: background 0.3s, color 0.3s;
   display: flex;
   align-items: center;
   justify-content: center;
-  line-height: 0;
+  line-height: 1;
 }
 
 #backBtn:hover {
