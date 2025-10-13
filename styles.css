@@ -265,7 +265,7 @@ section h2 {
   transition: background 0.3s, color 0.3s, transform 0.2s;
 }
 
-.modal-close:hover {
+.modal-close:hover, .close-btn:hover {
   background: var(--card-bg-hover);
   color: #f5f6fa;
 }
