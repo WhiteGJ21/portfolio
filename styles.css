@@ -280,10 +280,8 @@ section h2 {
   background: var(--card-bg);
   border: 2px solid var(--card-border);
   border-radius: 6px;
-  padding: 0.15rem;
+  /* padding: 0.15rem; */
   transition: background 0.3s, color 0.3s;
-  width: 2.5rem;
-  height: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
