@@ -249,20 +249,20 @@ section h2 {
   position: absolute;
   top: 0.75rem;
   right: 0.75rem;
-  font-size: 2rem;
-  cursor: pointer;
-  color: var(--accent);
-  background: var(--card-bg);
-  border: 2px solid var(--card-border);
-  border-radius: 6px;
-  padding: 0.5rem;
-  transition: background 0.3s, color 0.3s;
   width: 2.5rem;
   height: 2.5rem;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  line-height: 1;
+
+  background: var(--card-bg);
+  border: 2px solid var(--card-border);
+  border-radius: 6px;
+  cursor: pointer;
+  color: var(--accent);
+  padding: 0;
+  transition: background 0.3s, color 0.3s, transform 0.2s;
 }
 
 .modal-close:hover {
@@ -270,9 +270,9 @@ section h2 {
   color: #f5f6fa;
 }
 
-.close-btn svg {
-  width: 10%;   /* adjust size */
-  height: 10%;
+.close-btn svg, .modal-close svg {
+  width: 80%;   /* adjust size */
+  height: 80%;
 }
 
 #backBtn, #close-btn {
