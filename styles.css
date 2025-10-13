@@ -409,7 +409,7 @@ section h2 {
   will-change: transform; /* hint for smoother animations */
 }
 
-.card-front, .card-back {
+.card-front {
   width: 100%;
   height: 100%;
   border-radius: 12px;
@@ -417,7 +417,7 @@ section h2 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #21232d;
+  background: var(--card-bg);
   border: 2px solid var(--card-border);
   color: #f5f6fa; /* make skill card text white */
   box-shadow: 0 3px 12px rgba(0,0,0,0.22);
@@ -434,6 +434,22 @@ section h2 {
   opacity: 0;
   overflow-y: auto;
   color: #f5f6fa;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--card-bg);
+  border: 2px solid var(--card-border);
+  box-shadow: 0 3px 12px rgba(0,0,0,0.22);
+  position: absolute;
+  backface-visibility: hidden;
+  transition: transform 0.45s cubic-bezier(.2,.8,.2,1), opacity 0.3s ease, background 0.3s ease;
+  padding: 1rem;
+  font-weight: 500;
+  transform-style: preserve-3d;
 }
 
 .skill-card.flipped .card-front {
