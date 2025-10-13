@@ -417,15 +417,9 @@ skillCards.forEach(card => {
     const skillType = card.getAttribute("data-skill");
     const items = skillsData[skillType];
 
-    // Populate back
-    cardBack.innerHTML = `<h3>${skillType.charAt(0).toUpperCase() + skillType.slice(1)}</h3>`;
-
+    // Create wrapper with two-column layout for languages and tools
     const itemsWrapper = document.createElement("div");
-    itemsWrapper.style.display = skillType === "languages" ? "grid" : "block";
-    itemsWrapper.style.justifyContent = "center";
-    itemsWrapper.style.flexWrap = "wrap";
-
-    if (skillType === "languages") {
+    if (skillType === "languages" || skillType === "tools") {
       itemsWrapper.style.display = "grid";
       itemsWrapper.style.gridTemplateColumns = "1fr 1fr";
       itemsWrapper.style.columnGap = "1rem";
@@ -445,6 +439,7 @@ skillCards.forEach(card => {
       itemsWrapper.appendChild(div);
     });
 
+    cardBack.innerHTML = `<h3>${skillType.charAt(0).toUpperCase() + skillType.slice(1)}</h3>`;
     cardBack.appendChild(itemsWrapper);
 
     // Add close button if not already
