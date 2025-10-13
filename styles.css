@@ -245,7 +245,7 @@ section h2 {
   justify-content: center;
 }
 
-.modal-close {
+.modal-close, .close-btn {
   position: absolute;
   top: 0.75rem;
   right: 0.75rem;
